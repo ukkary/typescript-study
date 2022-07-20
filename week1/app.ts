@@ -20,7 +20,6 @@ const handEmoji = Object.freeze({
 const question = `最初は、${handEmoji.rock}！ジャンケン......!?\n0: ${handEmoji.rock} 1: ${handEmoji.scissors}、2: ${handEmoji.paper}\n`
 const computerHandMap = [handEmoji.rock, handEmoji.scissors, handEmoji.paper]
 
-
 std.question(question, (line) => {
   const computerHand = Math.floor(Math.random() * 3);
   const playerHand = Number(line);
