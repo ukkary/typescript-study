@@ -18,22 +18,17 @@ const handEmoji = Object.freeze({
 });
 
 const question = `最初は、${handEmoji.rock}！ジャンケン......!?\n0: ${handEmoji.rock} 1: ${handEmoji.scissors}、2: ${handEmoji.paper}\n`
-const computerHandMap = [handEmoji.rock, handEmoji.scissors, handEmoji.paper]
+const handMap = [handEmoji.rock, handEmoji.scissors, handEmoji.paper]
 
 std.question(question, (line) => {
-  try {
-    const computerHand = Math.floor(Math.random() * 3);
-    const playerHand = Number(line);
-    console.log("--------------------------");
-    console.log(`あなたの手: ${computerHandMap[playerHand]}`);
-    console.log(`コンピューターの手: ${computerHandMap[computerHand]}`);
-    computerHand === playerHand && console.log(`結果: あいこ${resultEmoji.draw}`);
-    (computerHand - playerHand + 3) % 3 === 1 && console.log(`結果: 勝ち${resultEmoji.win}`);
-    (computerHand - playerHand + 3) % 3 === 2 && console.log(`結果: 負け${resultEmoji.lose}`);
-    console.log("--------------------------");
-    std.close();
-  } catch (error) {
-    console.log("無効試合")
-    std.close();
-  }
+  const computerHand = Math.floor(Math.random() * 3);
+  const playerHand = parseInt(line, 10);
+  console.log("--------------------------");
+  console.log(`あなたの手: ${handMap[playerHand]}`);
+  console.log(`コンピューターの手: ${handMap[computerHand]}`);
+  computerHand === playerHand && console.log(`結果: あいこ${resultEmoji.draw}`);
+  (computerHand - playerHand + 3) % 3 === 1 && console.log(`結果: 勝ち${resultEmoji.win}`);
+  (computerHand - playerHand + 3) % 3 === 2 && console.log(`結果: 負け${resultEmoji.lose}`);
+  console.log("--------------------------");
+  std.close();
 });
